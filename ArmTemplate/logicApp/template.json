@@ -1,0 +1,107 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workflows_one_drive_file_name_name": {
+            "defaultValue": "one-drive-file-name",
+            "type": "String"
+        },
+        "connections_azurequeues_3_externalid": {
+            "defaultValue": "/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/resourceGroups/test4/providers/Microsoft.Web/connections/test4-azurequeues",
+            "type": "String"
+        },
+        "connections_onedrive_externalid": {
+            "defaultValue": "/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/resourceGroups/test4/providers/Microsoft.Web/connections/onedrive",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_one_drive_file_name_name')]",
+            "location": "eastus",
+            "tags": {
+                "group": "test4"
+            },
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "When_a_file_is_created": {
+                            "recurrence": {
+                                "frequency": "Minute",
+                                "interval": 3
+                            },
+                            "evaluatedRecurrence": {
+                                "frequency": "Minute",
+                                "interval": 3
+                            },
+                            "metadata": {
+                                "3E9C159CE0F473D9!114": "/Apps/Azure/LogicApps/basic4_test4"
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['onedrive']['connectionId']"
+                                    }
+                                },
+                                "method": "get",
+                                "path": "/datasets/default/triggers/onnewfilev2",
+                                "queries": {
+                                    "folderId": "3E9C159CE0F473D9!114",
+                                    "includeSubfolders": true,
+                                    "inferContentType": true,
+                                    "simulate": false
+                                }
+                            }
+                        }
+                    },
+                    "actions": {
+                        "Put_a_message_on_a_queue_(V2)": {
+                            "runAfter": {},
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": "@base64ToString(triggerOutputs()['headers']['x-ms-file-path-encoded'])",
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azurequeues']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/v2/storageAccounts/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/queues/@{encodeURIComponent('one-drive-new-file')}/messages"
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "azurequeues": {
+                                "connectionId": "[parameters('connections_azurequeues_3_externalid')]",
+                                "connectionName": "test4-azurequeues",
+                                "id": "/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/providers/Microsoft.Web/locations/eastus/managedApis/azurequeues"
+                            },
+                            "onedrive": {
+                                "connectionId": "[parameters('connections_onedrive_externalid')]",
+                                "connectionName": "onedrive",
+                                "id": "/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/providers/Microsoft.Web/locations/eastus/managedApis/onedrive"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

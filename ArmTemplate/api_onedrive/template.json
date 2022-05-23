@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "connections_onedrive_name": {
+            "defaultValue": "onedrive",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_onedrive_name')]",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "ray.chunkit.chung@gmail.com",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                // "createdTime": "2022-05-20T06:18:29.3029352Z",
+                // "changedTime": "2022-05-23T00:54:21.6932711Z",
+                "api": {
+                    "name": "[parameters('connections_onedrive_name')]",
+                    "displayName": "OneDrive",
+                    "description": "Connect to OneDrive to manage your files. You can perform various actions such as upload, update, get, and delete on files in OneDrive.",
+                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/depfeife/special-train/1.0.1489.2478/', parameters('connections_onedrive_name'), '/icon.png')]",
+                    "brandColor": "#0078D4",
+                    "id": "[concat('/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/providers/Microsoft.Web/locations/eastus/managedApis/', parameters('connections_onedrive_name'))]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/resourceGroups/test4/providers/Microsoft.Web/connections/', parameters('connections_onedrive_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        }
+    ]
+}

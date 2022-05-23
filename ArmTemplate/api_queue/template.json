@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "connections_azurequeues": {
+            "defaultValue": "test4-azurequeues",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azurequeues')]",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "test4-logicapp-onedrive-queue",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                // "createdTime": "2022-05-20T07:26:51.3913412Z",
+                // "changedTime": "2022-05-20T07:26:51.5632666Z",
+                "api": {
+                    "name": "azurequeues",
+                    "displayName": "Azure Queues",
+                    "description": "Azure Queue storage provides cloud messaging between application components. Queue storage also supports managing asynchronous tasks and building process work flows.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1546/1.0.1546.2665/azurequeues/icon.png",
+                    "brandColor": "#0072C6",
+                    "id": "/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/providers/Microsoft.Web/locations/eastus/managedApis/azurequeues",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/98da09a6-05c9-4029-96f0-933b69d39680/resourceGroups/test4/providers/Microsoft.Web/connections/', parameters('connections_azurequeues'), '/extensions/proxy/testConnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        }
+    ]
+}
