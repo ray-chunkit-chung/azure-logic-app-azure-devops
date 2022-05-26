@@ -1,0 +1,912 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "extensions_setupMachine_fileUris": {
+            "type": "Array"
+        },
+        "extensions_setupMachine_storageAccountName": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_storageAccountKey": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_commandToExecute": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_fileUris_1": {
+            "type": "Array"
+        },
+        "extensions_setupMachine_storageAccountName_1": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_storageAccountKey_1": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_commandToExecute_1": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_fileUris_2": {
+            "type": "Array"
+        },
+        "extensions_setupMachine_storageAccountName_2": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_storageAccountKey_2": {
+            "type": "SecureString"
+        },
+        "extensions_setupMachine_commandToExecute_2": {
+            "type": "SecureString"
+        },
+        "virtualNetworks_network_name": {
+            "defaultValue": "network",
+            "type": "String"
+        },
+        "virtualMachines_test3jenkins0_name": {
+            "defaultValue": "test3jenkins0",
+            "type": "String"
+        },
+        "virtualMachines_test3jenkins1_name": {
+            "defaultValue": "test3jenkins1",
+            "type": "String"
+        },
+        "virtualMachines_test3jenkins2_name": {
+            "defaultValue": "test3jenkins2",
+            "type": "String"
+        },
+        "publicIPAddresses_test3jenkinsip_name": {
+            "defaultValue": "test3jenkinsip",
+            "type": "String"
+        },
+        "networkInterfaces_test3jenkins0nic_name": {
+            "defaultValue": "test3jenkins0nic",
+            "type": "String"
+        },
+        "networkInterfaces_test3jenkins1nic_name": {
+            "defaultValue": "test3jenkins1nic",
+            "type": "String"
+        },
+        "networkInterfaces_test3jenkins2nic_name": {
+            "defaultValue": "test3jenkins2nic",
+            "type": "String"
+        },
+        "storageAccounts_5xxgglzmjyr6ustorage_name": {
+            "defaultValue": "5xxgglzmjyr6ustorage",
+            "type": "String"
+        },
+        "networkSecurityGroups_default_subnet_sg_name": {
+            "defaultValue": "default-subnet-sg",
+            "type": "String"
+        },
+        "disks_test3jenkins0_OsDisk_1_1692f9f3e6904f8f9bd4f597fdb70750_externalid": {
+            "defaultValue": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/disks/test3jenkins0_OsDisk_1_1692f9f3e6904f8f9bd4f597fdb70750",
+            "type": "String"
+        },
+        "disks_test3jenkins0_disk2_5095a479c4334c70b89e80b7dc6784ab_externalid": {
+            "defaultValue": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/disks/test3jenkins0_disk2_5095a479c4334c70b89e80b7dc6784ab",
+            "type": "String"
+        },
+        "disks_test3jenkins1_OsDisk_1_1d2a09c689c04374b04efe807419661d_externalid": {
+            "defaultValue": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/disks/test3jenkins1_OsDisk_1_1d2a09c689c04374b04efe807419661d",
+            "type": "String"
+        },
+        "disks_test3jenkins1_disk2_aa34a79c511044d491c9745f0a90b27b_externalid": {
+            "defaultValue": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/disks/test3jenkins1_disk2_aa34a79c511044d491c9745f0a90b27b",
+            "type": "String"
+        },
+        "disks_test3jenkins2_OsDisk_1_faa041b4ecf94a3398633061b71cbe00_externalid": {
+            "defaultValue": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/disks/test3jenkins2_OsDisk_1_faa041b4ecf94a3398633061b71cbe00",
+            "type": "String"
+        },
+        "disks_test3jenkins2_disk2_2c8cf8e8d5ec4454ae8f7ae94cc48173_externalid": {
+            "defaultValue": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/disks/test3jenkins2_disk2_2c8cf8e8d5ec4454ae8f7ae94cc48173",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('networkSecurityGroups_default_subnet_sg_name')]",
+            "location": "eastus",
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "pub_allow_tcp_port_22",
+                        "properties": {
+                            "description": "Allow inbound tcp port 22 from Internet",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "Internet",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 201,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "pub_allow_tcp_port_80",
+                        "properties": {
+                            "description": "Allow inbound tcp port 80 from Internet",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "Internet",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 202,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "pub_allow_tcp_port_443",
+                        "properties": {
+                            "description": "Allow inbound tcp port 443 from Internet",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "Internet",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 203,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('publicIPAddresses_test3jenkinsip_name')]",
+            "location": "eastus",
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "properties": {
+                "ipAddress": "20.127.123.129",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "test3jenkins5xxgglzmjyr6u-vm0",
+                    "fqdn": "test3jenkins5xxgglzmjyr6u-vm0.eastus.cloudapp.azure.com"
+                },
+                "ipTags": []
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-09-01",
+            "name": "[parameters('storageAccounts_5xxgglzmjyr6ustorage_name')]",
+            "location": "eastus",
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "properties": {
+                "minimumTlsVersion": "TLS1_0",
+                "allowBlobPublicAccess": true,
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": true
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('virtualMachines_test3jenkins0_name'), '/setupMachine')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_test3jenkins0_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {
+                    "fileUris": "[parameters('extensions_setupMachine_fileUris')]"
+                },
+                "protectedSettings": {
+                    "storageAccountName": "[parameters('extensions_setupMachine_storageAccountName')]",
+                    "storageAccountKey": "[parameters('extensions_setupMachine_storageAccountKey')]",
+                    "commandToExecute": "[parameters('extensions_setupMachine_commandToExecute')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('virtualMachines_test3jenkins1_name'), '/setupMachine')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_test3jenkins1_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {
+                    "fileUris": "[parameters('extensions_setupMachine_fileUris_1')]"
+                },
+                "protectedSettings": {
+                    "storageAccountName": "[parameters('extensions_setupMachine_storageAccountName_1')]",
+                    "storageAccountKey": "[parameters('extensions_setupMachine_storageAccountKey_1')]",
+                    "commandToExecute": "[parameters('extensions_setupMachine_commandToExecute_1')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('virtualMachines_test3jenkins2_name'), '/setupMachine')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_test3jenkins2_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {
+                    "fileUris": "[parameters('extensions_setupMachine_fileUris_2')]"
+                },
+                "protectedSettings": {
+                    "storageAccountName": "[parameters('extensions_setupMachine_storageAccountName_2')]",
+                    "storageAccountKey": "[parameters('extensions_setupMachine_storageAccountKey_2')]",
+                    "commandToExecute": "[parameters('extensions_setupMachine_commandToExecute_2')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('networkInterfaces_test3jenkins1nic_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_network_name'), 'default-subnet')]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_network_name'), 'default-subnet')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('networkInterfaces_test3jenkins2nic_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_network_name'), 'default-subnet')]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.6",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_network_name'), 'default-subnet')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('networkSecurityGroups_default_subnet_sg_name'), '/pub_allow_tcp_port_22')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+            ],
+            "properties": {
+                "description": "Allow inbound tcp port 22 from Internet",
+                "protocol": "Tcp",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "Internet",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 201,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('networkSecurityGroups_default_subnet_sg_name'), '/pub_allow_tcp_port_443')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+            ],
+            "properties": {
+                "description": "Allow inbound tcp port 443 from Internet",
+                "protocol": "Tcp",
+                "sourcePortRange": "*",
+                "destinationPortRange": "443",
+                "sourceAddressPrefix": "Internet",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 203,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('networkSecurityGroups_default_subnet_sg_name'), '/pub_allow_tcp_port_80')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+            ],
+            "properties": {
+                "description": "Allow inbound tcp port 80 from Internet",
+                "protocol": "Tcp",
+                "sourcePortRange": "*",
+                "destinationPortRange": "80",
+                "sourceAddressPrefix": "Internet",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 202,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('virtualNetworks_network_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/24"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "default-subnet",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId(concat('Microsoft.Network/', parameters('virtualNetworks_network_name'), 'SecurityGroups'), parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+                            },
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                },
+                "deleteRetentionPolicy": {
+                    "allowPermanentDelete": false,
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "protocolSettings": {
+                    "smb": {}
+                },
+                "cors": {
+                    "corsRules": []
+                },
+                "shareDeleteRetentionPolicy": {
+                    "enabled": true,
+                    "days": 7
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/queueServices",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/tableServices",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2021-11-01",
+            "name": "[parameters('virtualMachines_test3jenkins0_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_test3jenkins0nic_name'))]",
+                "[resourceId('Microsoft.Storage/StorageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "plan": {
+                "name": "default",
+                "product": "jenkins-master-slave-multitier-image",
+                "publisher": "bitnami"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_A1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "bitnami",
+                        "offer": "jenkins-master-slave-multitier-image",
+                        "sku": "default",
+                        "version": "2.332.2112450228"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_test3jenkins0_name'), '_OsDisk_1_1692f9f3e6904f8f9bd4f597fdb70750')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS",
+                            "id": "[parameters('disks_test3jenkins0_OsDisk_1_1692f9f3e6904f8f9bd4f597fdb70750_externalid')]"
+                        },
+                        "deleteOption": "Detach",
+                        "diskSizeGB": 30
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_test3jenkins0_name'), '_disk2_5095a479c4334c70b89e80b7dc6784ab')]",
+                            "createOption": "Empty",
+                            "caching": "None",
+                            "managedDisk": {
+                                "storageAccountType": "Standard_LRS",
+                                "id": "[parameters('disks_test3jenkins0_disk2_5095a479c4334c70b89e80b7dc6784ab_externalid')]"
+                            },
+                            "deleteOption": "Detach",
+                            "diskSizeGB": 50,
+                            "toBeDetached": false
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_test3jenkins0_name')]",
+                    "adminUsername": "bitnami",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false,
+                        "patchSettings": {
+                            "patchMode": "ImageDefault",
+                            "assessmentMode": "ImageDefault"
+                        }
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_test3jenkins0nic_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https://', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '.blob.core.windows.net/')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2021-11-01",
+            "name": "[parameters('virtualMachines_test3jenkins1_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_test3jenkins1nic_name'))]",
+                "[resourceId('Microsoft.Storage/StorageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "plan": {
+                "name": "default",
+                "product": "jenkins-master-slave-multitier-image",
+                "publisher": "bitnami"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_A1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "bitnami",
+                        "offer": "jenkins-master-slave-multitier-image",
+                        "sku": "default",
+                        "version": "2.332.2112450228"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_test3jenkins1_name'), '_OsDisk_1_1d2a09c689c04374b04efe807419661d')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS",
+                            "id": "[parameters('disks_test3jenkins1_OsDisk_1_1d2a09c689c04374b04efe807419661d_externalid')]"
+                        },
+                        "deleteOption": "Detach",
+                        "diskSizeGB": 30
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_test3jenkins1_name'), '_disk2_aa34a79c511044d491c9745f0a90b27b')]",
+                            "createOption": "Empty",
+                            "caching": "None",
+                            "managedDisk": {
+                                "storageAccountType": "Standard_LRS",
+                                "id": "[parameters('disks_test3jenkins1_disk2_aa34a79c511044d491c9745f0a90b27b_externalid')]"
+                            },
+                            "deleteOption": "Detach",
+                            "diskSizeGB": 50,
+                            "toBeDetached": false
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_test3jenkins1_name')]",
+                    "adminUsername": "bitnami",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false,
+                        "patchSettings": {
+                            "patchMode": "ImageDefault",
+                            "assessmentMode": "ImageDefault"
+                        }
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_test3jenkins1nic_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https://', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '.blob.core.windows.net/')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2021-11-01",
+            "name": "[parameters('virtualMachines_test3jenkins2_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_test3jenkins2nic_name'))]",
+                "[resourceId('Microsoft.Storage/StorageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "plan": {
+                "name": "default",
+                "product": "jenkins-master-slave-multitier-image",
+                "publisher": "bitnami"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_A1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "bitnami",
+                        "offer": "jenkins-master-slave-multitier-image",
+                        "sku": "default",
+                        "version": "2.332.2112450228"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_test3jenkins2_name'), '_OsDisk_1_faa041b4ecf94a3398633061b71cbe00')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS",
+                            "id": "[parameters('disks_test3jenkins2_OsDisk_1_faa041b4ecf94a3398633061b71cbe00_externalid')]"
+                        },
+                        "deleteOption": "Detach",
+                        "diskSizeGB": 30
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_test3jenkins2_name'), '_disk2_2c8cf8e8d5ec4454ae8f7ae94cc48173')]",
+                            "createOption": "Empty",
+                            "caching": "None",
+                            "managedDisk": {
+                                "storageAccountType": "Standard_LRS",
+                                "id": "[parameters('disks_test3jenkins2_disk2_2c8cf8e8d5ec4454ae8f7ae94cc48173_externalid')]"
+                            },
+                            "deleteOption": "Detach",
+                            "diskSizeGB": 50,
+                            "toBeDetached": false
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_test3jenkins2_name')]",
+                    "adminUsername": "bitnami",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false,
+                        "patchSettings": {
+                            "patchMode": "ImageDefault",
+                            "assessmentMode": "ImageDefault"
+                        }
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_test3jenkins2nic_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https://', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '.blob.core.windows.net/')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('networkInterfaces_test3jenkins0nic_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_test3jenkinsip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_network_name'), 'default-subnet')]"
+            ],
+            "tags": {
+                "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+            },
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_test3jenkinsip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_network_name'), 'default-subnet')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_network_name'), '/default-subnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_network_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.0.0.0/24",
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_default_subnet_sg_name'))]"
+                },
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default/bootdiagnostics-test3jenk-4d9ec83b-13c1-4644-b04b-1f75baab190a')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "properties": {
+                "immutableStorageWithVersioning": {
+                    "enabled": false
+                },
+                "defaultEncryptionScope": "$account-encryption-key",
+                "denyEncryptionScopeOverride": false,
+                "publicAccess": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default/bootdiagnostics-test3jenk-bea17dd0-8255-4829-a6ff-15e41b22da05')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "properties": {
+                "immutableStorageWithVersioning": {
+                    "enabled": false
+                },
+                "defaultEncryptionScope": "$account-encryption-key",
+                "denyEncryptionScopeOverride": false,
+                "publicAccess": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), '/default/bootdiagnostics-test3jenk-d0cc4520-5f12-453b-a81a-9ad889d092c7')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_5xxgglzmjyr6ustorage_name'))]"
+            ],
+            "properties": {
+                "immutableStorageWithVersioning": {
+                    "enabled": false
+                },
+                "defaultEncryptionScope": "$account-encryption-key",
+                "denyEncryptionScopeOverride": false,
+                "publicAccess": "None"
+            }
+        }
+    ]
+}

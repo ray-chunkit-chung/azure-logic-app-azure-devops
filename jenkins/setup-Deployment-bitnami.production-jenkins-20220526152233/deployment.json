@@ -1,0 +1,292 @@
+{
+  "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233",
+  "name": "bitnami.production-jenkins-20220526152233",
+  "type": "Microsoft.Resources/deployments",
+  "tags": {
+    "marketplaceItemId": "bitnami.production-jenkinsdefault"
+  },
+  "properties": {
+    "templateLink": {
+      "uri": "https://catalogartifact.azureedge.net/publicartifacts/bitnami.production-jenkins-738d737b-1401-4403-881c-ae2fac055521-default/Artifacts/mainTemplate.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "templateHash": "17977543309117746015",
+    "parameters": {
+      "appPassword": {
+        "type": "SecureString"
+      },
+      "location": {
+        "type": "String",
+        "value": "eastus"
+      },
+      "stackId": {
+        "type": "String",
+        "value": "test3jenkins"
+      },
+      "authenticationType": {
+        "type": "String",
+        "value": "password"
+      },
+      "adminPassword": {
+        "type": "SecureString"
+      },
+      "sshKey": {
+        "type": "String",
+        "value": ""
+      },
+      "vmSize": {
+        "type": "String",
+        "value": "Standard_A1_v2"
+      },
+      "dataDiskSize": {
+        "type": "Int",
+        "value": 50
+      },
+      "customData": {
+        "type": "String",
+        "value": "# blank"
+      },
+      "bitnamiTags": {
+        "type": "Object",
+        "value": {
+          "provider": "0FE3856A-6009-4EB1-96C3-1774DA058F86"
+        }
+      },
+      "slaveCount": {
+        "type": "Int",
+        "value": 2
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Running",
+    "timestamp": "2022-05-26T06:41:29.8068005Z",
+    "duration": "PT6M32.3192701S",
+    "correlationId": "6d622dab-1264-40d9-b3e0-b64663ee90aa",
+    "providers": [
+      {
+        "namespace": "Microsoft.Resources",
+        "resourceTypes": [
+          {
+            "resourceType": "deployments",
+            "locations": [
+              null
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Storage",
+        "resourceTypes": [
+          {
+            "resourceType": "storageAccounts",
+            "locations": [
+              "eastus"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Network",
+        "resourceTypes": [
+          {
+            "resourceType": "networkSecurityGroups",
+            "locations": [
+              "eastus"
+            ]
+          },
+          {
+            "resourceType": "virtualNetworks",
+            "locations": [
+              "eastus"
+            ]
+          },
+          {
+            "resourceType": "networkInterfaces",
+            "locations": [
+              "eastus"
+            ]
+          },
+          {
+            "resourceType": "publicIPAddresses",
+            "locations": [
+              "eastus"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Compute",
+        "resourceTypes": [
+          {
+            "resourceType": "virtualMachines",
+            "locations": [
+              "eastus"
+            ]
+          },
+          {
+            "resourceType": "virtualMachines/extensions",
+            "locations": [
+              "eastus"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkSecurityGroups/default-subnet-sg",
+            "resourceType": "Microsoft.Network/networkSecurityGroups",
+            "resourceName": "default-subnet-sg"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/virtualNetworks/network",
+        "resourceType": "Microsoft.Network/virtualNetworks",
+        "resourceName": "network"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/virtualNetworks/network",
+            "resourceType": "Microsoft.Network/virtualNetworks",
+            "resourceName": "network"
+          },
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/publicIPAddresses/test3jenkinsip",
+            "resourceType": "Microsoft.Network/publicIPAddresses",
+            "resourceName": "test3jenkinsip"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins0nic",
+        "resourceType": "Microsoft.Network/networkInterfaces",
+        "resourceName": "test3jenkins0nic"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/virtualNetworks/network",
+            "resourceType": "Microsoft.Network/virtualNetworks",
+            "resourceName": "network"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins1nic",
+        "resourceType": "Microsoft.Network/networkInterfaces",
+        "resourceName": "test3jenkins1nic"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/virtualNetworks/network",
+            "resourceType": "Microsoft.Network/virtualNetworks",
+            "resourceName": "network"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins2nic",
+        "resourceType": "Microsoft.Network/networkInterfaces",
+        "resourceName": "test3jenkins2nic"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Storage/storageAccounts/5xxgglzmjyr6ustorage",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "5xxgglzmjyr6ustorage"
+          },
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins0nic",
+            "resourceType": "Microsoft.Network/networkInterfaces",
+            "resourceName": "test3jenkins0nic"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins0",
+        "resourceType": "Microsoft.Compute/virtualMachines",
+        "resourceName": "test3jenkins0"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Storage/storageAccounts/5xxgglzmjyr6ustorage",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "5xxgglzmjyr6ustorage"
+          },
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins1nic",
+            "resourceType": "Microsoft.Network/networkInterfaces",
+            "resourceName": "test3jenkins1nic"
+          },
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins0nic",
+            "resourceType": "Microsoft.Network/networkInterfaces",
+            "resourceName": "test3jenkins0nic"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins1",
+        "resourceType": "Microsoft.Compute/virtualMachines",
+        "resourceName": "test3jenkins1"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Storage/storageAccounts/5xxgglzmjyr6ustorage",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "5xxgglzmjyr6ustorage"
+          },
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins2nic",
+            "resourceType": "Microsoft.Network/networkInterfaces",
+            "resourceName": "test3jenkins2nic"
+          },
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins0nic",
+            "resourceType": "Microsoft.Network/networkInterfaces",
+            "resourceName": "test3jenkins0nic"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins2",
+        "resourceType": "Microsoft.Compute/virtualMachines",
+        "resourceName": "test3jenkins2"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins0",
+            "resourceType": "Microsoft.Compute/virtualMachines",
+            "resourceName": "test3jenkins0"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins0/extensions/setupMachine",
+        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "resourceName": "test3jenkins0/setupMachine"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins1",
+            "resourceType": "Microsoft.Compute/virtualMachines",
+            "resourceName": "test3jenkins1"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins1/extensions/setupMachine",
+        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "resourceName": "test3jenkins1/setupMachine"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins2",
+            "resourceType": "Microsoft.Compute/virtualMachines",
+            "resourceName": "test3jenkins2"
+          }
+        ],
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins2/extensions/setupMachine",
+        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "resourceName": "test3jenkins2/setupMachine"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}

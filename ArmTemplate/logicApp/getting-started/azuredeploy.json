@@ -33,7 +33,7 @@
   },
   "variables": {
     "frequency": "Hour",
-    "interval": "1",
+    "interval": "3",
     "type": "recurrence",
     "actionType": "http",
     "method": "GET",

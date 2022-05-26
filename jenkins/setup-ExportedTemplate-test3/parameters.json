@@ -1,0 +1,90 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "extensions_setupMachine_fileUris": {
+            "value": null
+        },
+        "extensions_setupMachine_storageAccountName": {
+            "value": null
+        },
+        "extensions_setupMachine_storageAccountKey": {
+            "value": null
+        },
+        "extensions_setupMachine_commandToExecute": {
+            "value": null
+        },
+        "extensions_setupMachine_fileUris_1": {
+            "value": null
+        },
+        "extensions_setupMachine_storageAccountName_1": {
+            "value": null
+        },
+        "extensions_setupMachine_storageAccountKey_1": {
+            "value": null
+        },
+        "extensions_setupMachine_commandToExecute_1": {
+            "value": null
+        },
+        "extensions_setupMachine_fileUris_2": {
+            "value": null
+        },
+        "extensions_setupMachine_storageAccountName_2": {
+            "value": null
+        },
+        "extensions_setupMachine_storageAccountKey_2": {
+            "value": null
+        },
+        "extensions_setupMachine_commandToExecute_2": {
+            "value": null
+        },
+        "virtualNetworks_network_name": {
+            "value": null
+        },
+        "virtualMachines_test3jenkins0_name": {
+            "value": null
+        },
+        "virtualMachines_test3jenkins1_name": {
+            "value": null
+        },
+        "virtualMachines_test3jenkins2_name": {
+            "value": null
+        },
+        "publicIPAddresses_test3jenkinsip_name": {
+            "value": null
+        },
+        "networkInterfaces_test3jenkins0nic_name": {
+            "value": null
+        },
+        "networkInterfaces_test3jenkins1nic_name": {
+            "value": null
+        },
+        "networkInterfaces_test3jenkins2nic_name": {
+            "value": null
+        },
+        "storageAccounts_5xxgglzmjyr6ustorage_name": {
+            "value": null
+        },
+        "networkSecurityGroups_default_subnet_sg_name": {
+            "value": null
+        },
+        "disks_test3jenkins0_OsDisk_1_1692f9f3e6904f8f9bd4f597fdb70750_externalid": {
+            "value": null
+        },
+        "disks_test3jenkins0_disk2_5095a479c4334c70b89e80b7dc6784ab_externalid": {
+            "value": null
+        },
+        "disks_test3jenkins1_OsDisk_1_1d2a09c689c04374b04efe807419661d_externalid": {
+            "value": null
+        },
+        "disks_test3jenkins1_disk2_aa34a79c511044d491c9745f0a90b27b_externalid": {
+            "value": null
+        },
+        "disks_test3jenkins2_OsDisk_1_faa041b4ecf94a3398633061b71cbe00_externalid": {
+            "value": null
+        },
+        "disks_test3jenkins2_disk2_2c8cf8e8d5ec4454ae8f7ae94cc48173_externalid": {
+            "value": null
+        }
+    }
+}

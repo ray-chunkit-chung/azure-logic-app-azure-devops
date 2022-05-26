@@ -1,0 +1,240 @@
+[
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/54A11A668E4C9FE7",
+    "operationId": "54A11A668E4C9FE7",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Running",
+      "timestamp": "2022-05-26T06:41:29.8392286Z",
+      "duration": "PT5M17.8380624S",
+      "trackingId": "e5384bd4-d7f1-43b7-b76d-99e034005c83",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins2/extensions/setupMachine",
+        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "resourceName": "test3jenkins2/setupMachine"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/6D9D375445848252",
+    "operationId": "6D9D375445848252",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Running",
+      "timestamp": "2022-05-26T06:41:16.168613Z",
+      "duration": "PT5M4.1674468S",
+      "trackingId": "171f1bcb-d6c2-4a30-b0dd-b0a3a3d59ff0",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins0/extensions/setupMachine",
+        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "resourceName": "test3jenkins0/setupMachine"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/0C9453F896711D21",
+    "operationId": "0C9453F896711D21",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Running",
+      "timestamp": "2022-05-26T06:41:12.545707Z",
+      "duration": "PT5M0.5445408S",
+      "trackingId": "6fc88b92-b634-4020-adec-c30ff6eb184e",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins1/extensions/setupMachine",
+        "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "resourceName": "test3jenkins1/setupMachine"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/3FABDD650961D9EF",
+    "operationId": "3FABDD650961D9EF",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:37:22.7103793Z",
+      "duration": "PT1M10.7092131S",
+      "trackingId": "5ddbe46c-0c3c-438a-887d-5058851f26e9",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins2",
+        "resourceType": "Microsoft.Compute/virtualMachines",
+        "resourceName": "test3jenkins2"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/EB87F279AFCC26C8",
+    "operationId": "EB87F279AFCC26C8",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:37:07.807566Z",
+      "duration": "PT55.8063998S",
+      "trackingId": "a28e78d2-9e53-42c2-ad6e-7fad69a93778",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins0",
+        "resourceType": "Microsoft.Compute/virtualMachines",
+        "resourceName": "test3jenkins0"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/62782A92188EE8CD",
+    "operationId": "62782A92188EE8CD",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:37:04.4869327Z",
+      "duration": "PT52.4857665S",
+      "trackingId": "566b13e2-905d-4221-aa4c-5bd450153a18",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Compute/virtualMachines/test3jenkins1",
+        "resourceType": "Microsoft.Compute/virtualMachines",
+        "resourceName": "test3jenkins1"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/B66A22DE8810440F",
+    "operationId": "B66A22DE8810440F",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:37.5042114Z",
+      "duration": "PT7.1770629S",
+      "trackingId": "972e3139-2c70-4a9e-ac06-18d53d875c2c",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins2nic",
+        "resourceType": "Microsoft.Network/networkInterfaces",
+        "resourceName": "test3jenkins2nic"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/F2A095A7E223E940",
+    "operationId": "F2A095A7E223E940",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:37.1403223Z",
+      "duration": "PT6.8131738S",
+      "trackingId": "d4af0fa9-fe90-4f48-bd93-cee2f3ad4d4d",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins1nic",
+        "resourceType": "Microsoft.Network/networkInterfaces",
+        "resourceName": "test3jenkins1nic"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/B8DA7E17AF2BA53D",
+    "operationId": "B8DA7E17AF2BA53D",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:36.9893395Z",
+      "duration": "PT6.662191S",
+      "trackingId": "aec10c9f-68f1-43fe-abcc-b6282c95d8cf",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkInterfaces/test3jenkins0nic",
+        "resourceType": "Microsoft.Network/networkInterfaces",
+        "resourceName": "test3jenkins0nic"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/76A87AA53EE0FA11",
+    "operationId": "76A87AA53EE0FA11",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:30.2833484Z",
+      "duration": "PT31.3767764S",
+      "trackingId": "5bdc3f76-9231-4059-93d9-8b8cb039ed69",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/virtualNetworks/network",
+        "resourceType": "Microsoft.Network/virtualNetworks",
+        "resourceName": "network"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/7174987B8E1A5EE5",
+    "operationId": "7174987B8E1A5EE5",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:14.9397283Z",
+      "duration": "PT9.0554109S",
+      "trackingId": "3c174af2-046c-4f34-8be5-1ac5499d2ce4",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/publicIPAddresses/test3jenkinsip",
+        "resourceType": "Microsoft.Network/publicIPAddresses",
+        "resourceName": "test3jenkinsip"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/2402058C26B840AD",
+    "operationId": "2402058C26B840AD",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:19.2772968Z",
+      "duration": "PT20.3707248S",
+      "trackingId": "6028725c-11d2-401c-8583-c49919bf93e2",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Network/networkSecurityGroups/default-subnet-sg",
+        "resourceType": "Microsoft.Network/networkSecurityGroups",
+        "resourceName": "default-subnet-sg"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/C3BCB7FA77C189A9",
+    "operationId": "C3BCB7FA77C189A9",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:28.0803267Z",
+      "duration": "PT29.1737547S",
+      "trackingId": "1fea2578-c50f-473b-b030-31d792f37d9c",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Storage/storageAccounts/5xxgglzmjyr6ustorage",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "5xxgglzmjyr6ustorage"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/bitnami.production-jenkins-20220526152233/operations/E987BC9FE06E6175",
+    "operationId": "E987BC9FE06E6175",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2022-05-26T06:35:20.1615712Z",
+      "duration": "PT21.2549992S",
+      "trackingId": "87b05373-a0e1-4301-a5a7-a5d858f9aaf5",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/061b4e23-4b07-4fcf-8c73-8a879ce2715e/resourceGroups/test3/providers/Microsoft.Resources/deployments/pid-604f1ad0-56e7-47e2-b36a-f758ae043169-partnercenter",
+        "resourceType": "Microsoft.Resources/deployments",
+        "resourceName": "pid-604f1ad0-56e7-47e2-b36a-f758ae043169-partnercenter"
+      }
+    }
+  }
+]
