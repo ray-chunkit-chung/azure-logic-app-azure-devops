@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workflows_one_drive_file_name_name": {
-            "defaultValue": "one-drive-new-file-002",
+            "defaultValue": "one-drive-new-file-004",
             "type": "String"
         },
         "connections_azurequeues_3_externalid": {
