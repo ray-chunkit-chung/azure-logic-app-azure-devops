@@ -32,7 +32,7 @@
     }
   },
   "variables": {
-    "frequency": "Day",
+    "frequency": "Hour",
     "interval": "1",
     "type": "recurrence",
     "actionType": "http",
