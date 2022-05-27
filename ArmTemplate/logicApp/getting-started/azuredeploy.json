@@ -16,11 +16,11 @@
         "description": "Set app name here"
       }
     },
-    "testUri": {
+    "httpGetUri": {
       "type": "string",
       "defaultValue": "https://status.azure.com/en-us/status/",
       "metadata": {
-        "description": "A test URI"
+        "description": "URI: different for dev, staging, prod. To be selected in Azure DevOps. See parameters.json"
       }
     },
     "location": {
@@ -53,9 +53,9 @@
           "$schema": "[variables('workflowSchema')]",
           "contentVersion": "1.0.0.0",
           "parameters": {
-            "testUri": {
+            "httpGetUri": {
               "type": "string",
-              "defaultValue": "[parameters('testUri')]"
+              "defaultValue": "[parameters('httpGetUri')]"
             }
           },
           "triggers": {
@@ -72,7 +72,7 @@
               "type": "[variables('actionType')]",
               "inputs": {
                 "method": "[variables('method')]",
-                "uri": "[parameters('testUri')]"
+                "uri": "[parameters('httpGetUri')]"
               }
             }
           }
