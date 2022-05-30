@@ -32,8 +32,8 @@
     }
   },
   "variables": {
-    "frequency": "Day",
-    "interval": "7",
+    "frequency": "Month",
+    "interval": "1",
     "type": "recurrence",
     "actionType": "http",
     "method": "GET",
